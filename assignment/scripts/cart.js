@@ -73,3 +73,14 @@ addItem('pancetta');
 addItem('green onion');
 addItem('cilantro');
 console.log(basket);
+
+function removeItem(item) {
+  console.log('removing: ' + basket.indexOf(item));
+  basket.splice(basket.indexOf(item), 1);
+  return true;
+}
+
+//testing removeItem
+console.log(basket);
+removeItem('peppers');
+console.log(basket);
