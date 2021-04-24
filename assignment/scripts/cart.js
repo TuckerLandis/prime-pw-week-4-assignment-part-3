@@ -4,48 +4,72 @@ console.log('***** Cart Functions *****');
 
 let basket = [];
 
-function addItem( item ) {
-  console.log( 'in addItem', item );
-  basket.push( item );
+/* --old addItem function --
+
+function addItem(item){
+  console.log('adding: ' + item );
+  basket.push(item);
+  console.log('added: ' + item);
   return true;
-} //end addItem
+} // end addItem
 
 //testing addItem
-console.log('Basket: ' + basket);
-console.log('adding peppers (expect true)');
-addItem('peppers');
 addItem('mango');
 addItem('rice');
-console.log('Basket: ' + basket);
+addItem('peppers');
+console.log(basket);*/
 
-function listItems( array ) {
-  console.log( 'in listItems', array );
-  for (let item of array) {
+function listItems(){
+  console.log('Listing items in basket');
+  for (let item of basket) {
     console.log(item);
   } // end loop
-} // end listItems
+} // end listItems -- confirming i dont wan't a return in this function, assuming just for practice purposes?
 
-//testing listItems
-listItems(basket);
-// why can't i 'console.log(listItems(basket));' here?
-// ah because there is no return?
+// testing listItems without console.log() - the function logs and doesn't have
+listItems();
 
 function empty() {
   basket = [];
-  return 'emptied';
-} //end empty
+} // end empty -- someone in slack mentioned changing the length of the array to zero for this function, is that necessary?
 
 // testing empty
-empty();
-console.log(basket);
+// empty();
+// console.log(basket);
 
 const maxItems = 5;
 
-function isFull() {
+function isFull(){
   if (basket.length < maxItems) {
     return false;
-  } //end if
-  else {
+  } // end if
+  else if (basket.length >= maxItems) {
     return true;
-  } // end else
+  }  // end else
 } // end isFull
+
+//testing isFull
+console.log(isFull());
+
+function addItem(item){
+  console.log('adding: ' + item );
+  if (isFull() === false) {
+    basket.push(item);
+    console.log('added: ' + item);
+  } // end if
+  else if (isFull()) {
+    console.log('The basket is full, did not add: ' +  item);
+  } // end else if
+} // end addItem
+
+// i didn't realize i was not calling my function here, because i didn't have parentheses attached. big smile when i realized it
+
+//testing new addItem
+
+addItem('mango');
+addItem('rice');
+addItem('peppers');
+addItem('pancetta');
+addItem('green onion');
+addItem('cilantro');
+console.log(basket);
